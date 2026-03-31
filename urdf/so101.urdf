@@ -277,17 +277,45 @@
     <visual>
       <origin xyz="8.32667e-17 -0.000218214 0.000949706" rpy="-3.14159 -5.55112e-17 0"/>
       <geometry>
-        <mesh filename="package://so101_description/meshes/wrist_roll_follower_so101_v1.stl"/>
+        <mesh filename="package://so101_description/meshes/jaw.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="3d_printed"/>
     </visual>
     <collision>
       <origin xyz="8.32667e-17 -0.000218214 0.000949706" rpy="-3.14159 -5.55112e-17 0"/>
       <geometry>
-        <mesh filename="package://so101_description/meshes/wrist_roll_follower_so101_v1.stl"/>
+        <mesh filename="package://so101_description/meshes/jaw.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
+
+  <!-- Link d435i camera -->
+  <link name="d435i_link">
+    <inertial>
+      <origin xyz="-0.004284478300962667 -0.018299977421816962 0.01610029163661248" rpy="0 0 0"/>
+      <mass value="0.3592826634307687"/>
+      <inertia ixx="0.00021860469765284593" iyy="0.00019338932220357204" izz="5.6083111557389714e-05" ixy="-1.1255671984669287e-06" iyz="6.155592841866805e-05" ixz="7.745363146221947e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.008567603561087607 -0.029815158962986317 0.013092171737035613" rpy="-2.7925268031908748 1.221730476396021 1.5707963267949387"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/d435i.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="sts3215"/>
+    </visual>
+    <collision>
+      <origin xyz="-0.008567603561087607 -0.029815158962986317 0.013092171737035613" rpy="-2.7925268031908748 1.221730476396021 1.5707963267949387"/>
+      <geometry>
+        <mesh filename="package://so101_description/meshes/d435i.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="gripper_to_d435i" type="fixed">
+    <origin xyz="-0.02250293 0.05580957 -0.0140886" rpy="1.2217304763960246 -0.0000026535898 1.5707963267948966"/>
+    <parent link="gripper_link"/>
+    <child link="d435i_link"/>
+  </joint>
 
   <!-- Gripper frame (dummy link + fixed joint) -->
   <link name="gripper_frame_link">
@@ -316,14 +344,14 @@
     <visual>
       <origin xyz="-5.55112e-17 -5.55112e-17 0.0189" rpy="9.53145e-17 6.93889e-18 1.24077e-24"/>
       <geometry>
-        <mesh filename="package://so101_description/meshes/moving_jaw_so101_v1.stl"/>
+        <mesh filename="package://so101_description/meshes/moving_jaw.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="3d_printed"/>
     </visual>
     <collision>
       <origin xyz="-5.55112e-17 -5.55112e-17 0.0189" rpy="9.53145e-17 6.93889e-18 1.24077e-24"/>
       <geometry>
-        <mesh filename="package://so101_description/meshes/moving_jaw_so101_v1.stl"/>
+        <mesh filename="package://so101_description/meshes/moving_jaw.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
